@@ -88,6 +88,8 @@ jobs:
             sleep-disorder-ml:${{ github.sha }}
 
       
+
+      
       - name: Wait for application to become ready
         run: |
           for i in {1..15}; do
@@ -101,5 +103,40 @@ jobs:
           echo "Application did not become ready."
           docker logs sleep-disorder-ml-container
           exit 1
+
+     
+      - name: Test prediction endpoint
+        run: |
+          response=$(curl --fail --silent --show-error \
+            -X POST \
+            -H "Content-Type: application/json" \
+            -d '{
+              "Gender": "Male",
+              "Age": 30,
+              "Occupation": "Software Engineer",
+              "Sleep Duration": 7.0,
+              "Quality of Sleep": 7,
+              "Physical Activity Level": 60,
+              "Stress Level": 5,
+              "BMI Category": "Normal",
+              "Heart Rate": 70,
+              "Daily Steps": 7000,
+              "Systolic BP": 120,
+              "Diastolic BP": 80
+            }' \
+            http://localhost:5000/predict)
+          echo "Prediction response: $response"
+          echo "$response" | grep -q '"prediction"'
+
+       
+      - name: Show Docker container logs
+        if: always()
+        run: docker logs sleep-disorder-ml-container || true
+
+      - name: Stop and remove Docker container
+        if: always()
+        run: docker rm -f sleep-disorder-ml-container || true
+
+
 
 
