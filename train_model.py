@@ -13,7 +13,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 def train_model():
     print("Loading sleep dataset...")
-    data = pd.read_csv("sleep_dataset1.csv")
+    data = pd.read_csv("sleep_dataset.csv")
 
     # Assumption: blank target values mean No Disorder.
     # Confirm this interpretation with your instructor.
