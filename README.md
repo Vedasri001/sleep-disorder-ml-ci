@@ -1,0 +1,2 @@
+Observation:
+A Sleep Disorder Prediction machine-learning pipeline was implemented using Python, pandas, scikit-learn and GitHub Actions. The dataset was preprocessed, a Logistic Regression classification model was trained and evaluated, and the trained model and evaluation metrics were saved as artifacts. Automated tests were configured to verify the generated files and model predictions. The GitHub Actions workflow was also tested with an intentional failure and a subsequent correction to demonstrate continuous integration.
