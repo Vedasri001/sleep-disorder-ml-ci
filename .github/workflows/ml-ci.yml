@@ -45,7 +45,7 @@ jobs:
         with:
           name: sleep-disorder-ml-artifacts
           path: |
-            sleep_disorder_model.pkl
+            sleep_disorder_model_missing.pkl
             metrics.json
             sleep_dataset_processed.csv
           if-no-files-found: error
