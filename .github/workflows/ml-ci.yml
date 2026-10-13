@@ -43,9 +43,9 @@ jobs:
       - name: Upload validated ML artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: sleep-disorder-ml-artifacts
+          name: sleep-disorder-ml-artifact
           path: |
-            sleep_disorder_model_missing.pkl
+            sleep_disorder_model.pkl
             metrics.json
             sleep_dataset_processed.csv
           if-no-files-found: error
